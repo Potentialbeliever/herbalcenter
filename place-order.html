@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Products | Classic Herbal Center 🛒</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>🛒 Place Your Order</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="about.html">📖 About</a></li>
+        <li><a href="products.html">🌿 Products</a></li>
+        <li><a href="blog.html">📝 Blog</a></li>
+        <li><a href="contact.html">📞 Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Fill out your details to place an order</h2>
+      <p>Complete the form below to place an order for your selected product.</p>
+
+      <form action="order_submit.php" method="POST">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" required><br><br>
+
+        <label for="payment_reference">Payment Reference:</label>
+        <input type="text" id="payment_reference" name="payment_reference" required><br><br>
+
+        <button type="submit">Submit Order via WhatsApp</button>
+      </form>
+
+      <p>Once payment is done, <a href="https://wa.me/233200990242?text=Hi%2C%20I%20have%20paid%20for%20the%20following%20order%3A%0AName%3A%20[Your%20Name]%0AProduct%3A%20[Selected%20Product]%0APhone%20Number%3A%20[Your%20Phone%20Number]%0APayment%20Screenshot%3A%20[Attach%20your%20screenshot]" target="_blank">click here to send your payment confirmation via WhatsApp.</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Classic Herbal Center | 📍 Accra-Adenta | 📞 0200990242</p>
+  </footer>
+</body>
+</html>
