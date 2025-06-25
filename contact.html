@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-  <title>Classic Herbal Center 🌿 | Blog</title>
+  <meta name="description" content="Contact Classic Herbal Center for orders, questions, or herbal consultations. Located in Accra-Adenta, we deliver nationwide." />
+  <title>Classic Herbal Center 🌿 | Contact</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -15,25 +16,36 @@
         <li><a href="about.html">📖 About</a></li>
         <li><a href="products.html">🌿 Products</a></li>
         <li><a href="blog.html">📝 Blog</a></li>
-        <li><a href="contact.html">📞 Contact</a></li>
+        <li><a href="contact.html" class="active">📞 Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="blog-section">
-      <h2>Our Latest Blog Posts</h2>
-      <div class="blog-post">
-        <h3>🌱 The Benefits of Herbal Solutions for Men's Health</h3>
-        <p>Herbal treatments have been used for centuries to address various health issues. In this post, we explore how herbal remedies can help improve men's vitality, performance, and overall well-being.</p>
-        <a href="#">Read More...</a>
+    <section class="contact-section">
+      <h2>📞 Contact Us</h2>
+      <p>Have questions or want to place an order directly? Reach out to us through the form below or use our WhatsApp line. We're here to help you live healthier with natural herbal solutions.</p>
+
+      <div class="contact-info">
+        <p><strong>📍 Location:</strong> Accra - Adenta</p>
+        <p><strong>📞 Phone:</strong> 0200990242 / 0592294568</p>
+        <p><strong>📱 MoMo:</strong> 0592294568 <br> <strong>Name:</strong> Charles Nsiah Frimpong</p>
+        <p><strong>📨 Email:</strong> support@classicherbalcenter.com</p>
+        <p><strong>💬 WhatsApp:</strong> <a href="https://wa.me/233592294568" target="_blank">Click here to chat</a></p>
       </div>
 
-      <div class="blog-post">
-        <h3>💪 How Our Full Package Can Enhance Your Health</h3>
-        <p>Our Full Package combines herbal tonic, system cleanser, and Mapower to help you achieve better performance and vitality. Learn about how this powerful combination can benefit your health.</p>
-        <a href="#">Read More...</a>
-      </div>
+      <form class="contact-form">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
     </section>
   </main>
 
