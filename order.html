@@ -7,30 +7,33 @@
   <link rel="stylesheet" href="css/style.css" />
   <script>
     function calculateTotal() {
-      const productPrices = {
+      const prices = {
         'Full Package': 450.00,
         'Penis Enlargement Cream': 200.00,
         'Fertility Boosters': 150.00,
         'Strong and Hard Penis': 250.00
       };
-
-      const selectedProduct = document.getElementById('product').value;
-      const quantity = document.getElementById('quantity').value;
-      const basePrice = productPrices[selectedProduct];
-      const totalAmount = basePrice * quantity;
-      document.getElementById('total-amount').textContent = '₵' + totalAmount.toFixed(2);
+      const product = document.getElementById('product').value;
+      const qty = parseInt(document.getElementById('quantity').value) || 1;
+      const total = prices[product] * qty;
+      document.getElementById('total-amount').textContent = '₵' + total.toFixed(2);
     }
 
     function sendToWhatsApp() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
       const product = document.getElementById('product').value;
       const quantity = document.getElementById('quantity').value;
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value;
-      const momoRef = document.getElementById('momo-reference').value;
-      const location = document.getElementById('location').value;
+      const momoRef = document.getElementById('momo-reference').value.trim();
+      const location = document.getElementById('location').value.trim();
 
-      const message = `*Classic Herbal Order* 🌿%0A%0A` +
+      if (!name || !email || !phone || !momoRef || !location) {
+        alert("Please fill all required fields.");
+        return;
+      }
+
+      const msg = `*Classic Herbal Order* 🌿%0A%0A` +
         `📦 *Product:* ${product}%0A` +
         `🔢 *Quantity:* ${quantity}%0A` +
         `👤 *Name:* ${name}%0A` +
@@ -39,8 +42,7 @@
         `📍 *Location:* ${location}%0A` +
         `💰 *MoMo Ref:* ${momoRef}`;
 
-      const phoneNumber = "233592294568"; // WhatsApp number in international format (without +)
-      const url = `https://wa.me/${phoneNumber}?text=${message}`;
+      const url = `https://wa.me/233592294568?text=${msg}`;
       window.open(url, '_blank');
     }
 
@@ -48,64 +50,79 @@
   </script>
 </head>
 <body>
-  <header>
-    <h1>🌿 Order Your Herbal Products</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">🏠 Home</a></li>
-        <li><a href="about.html">📖 About</a></li>
-        <li><a href="products.html">🌿 Products</a></li>
-        <li><a href="blog.html">📝 Blog</a></li>
-        <li><a href="contact.html">📞 Contact</a></li>
-      </ul>
-    </nav>
+  <header class="top-header">
+    <div class="container">
+      <h1>🌿 Order Your Herbal Remedy</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">🏠 Home</a></li>
+          <li><a href="products.html">🌿 Products</a></li>
+          <li><a href="about.html">📖 About</a></li>
+          <li><a href="contact.html">📞 Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section>
-      <h2>🌱 Place Your Order</h2>
+    <section class="container order-form">
+      <h2>🛒 Complete Your Order</h2>
+
+      <div class="trust-badges">
+        <span>✔ 100% Natural</span>
+        <span>🔒 Secure Order</span>
+        <span>🚚 Nationwide Delivery</span>
+      </div>
+
       <form onsubmit="sendToWhatsApp(); return false;">
-        <label for="product">Choose a product:</label>
-        <select name="product" id="product" onchange="calculateTotal()">
+        <label for="product">🌿 Choose a product:</label>
+        <select id="product" onchange="calculateTotal()">
           <option value="Full Package">💪 Full Package</option>
           <option value="Penis Enlargement Cream">🍃 Penis Enlargement Cream</option>
           <option value="Fertility Boosters">🍀 Fertility Boosters</option>
-          <option value="Strong and Hard Penis">💪 Strong and Hard Penis</option>
+          <option value="Strong and Hard Penis">💥 Strong and Hard Penis</option>
         </select>
 
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" min="1" value="1" required onchange="calculateTotal()" />
+        <label for="quantity">🔢 Quantity:</label>
+        <input type="number" id="quantity" min="1" value="1" onchange="calculateTotal()" required />
 
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required />
+        <label for="name">👤 Your Name:</label>
+        <input type="text" id="name" required />
 
-        <label for="email">Your Email:</label>
-        <input type="email" id="email" name="email" required />
+        <label for="email">📧 Your Email:</label>
+        <input type="email" id="email" required />
 
-        <label for="phone">Your Phone Number:</label>
-        <input type="text" id="phone" name="phone" required />
+        <label for="phone">📞 Phone Number:</label>
+        <input type="tel" id="phone" required />
 
-        <h3>📱 MoMo Payment Details</h3>
-        <p>Please make payment via MoMo to <strong>0592294568</strong><br>
-        <strong>Charles Nsiah Frimpong</strong>.</p>
-        <label for="momo-reference">MoMo Payment Reference:</label>
-        <input type="text" id="momo-reference" name="momo-reference" required />
+        <div class="notice-box">
+          <h3>📱 MoMo Payment Info</h3>
+          <p>Pay to <strong>0592294568</strong><br><strong>Charles Nsiah Frimpong</strong></p>
+        </div>
 
-        <h3>📍 Delivery Location</h3>
-        <label for="location">Enter Your Location:</label>
-        <input type="text" id="location" name="location" required placeholder="Enter your location" />
+        <label for="momo-reference">💰 MoMo Reference Code:</label>
+        <input type="text" id="momo-reference" required />
 
-        <h3>Total Amount: <span id="total-amount">₵450.00</span></h3>
+        <label for="location">📍 Delivery Location:</label>
+        <input type="text" id="location" required placeholder="Enter your town, city or landmark" />
 
-        <p>Our location is in Accra-Adenta. We deliver worldwide, so you can place your order no matter where you are!</p>
+        <div class="total">
+          <h3>Total Amount: <span id="total-amount">₵450.00</span></h3>
+        </div>
 
-        <button type="submit" class="order-btn">Place Order via WhatsApp</button>
+        <p class="helper-text">🚀 We deliver across Ghana and worldwide. Your order is secure and confidential.</p>
+
+        <button type="submit" class="order-btn">✅ Place Order via WhatsApp</button>
       </form>
+
+      <div class="need-help">
+        💬 Need help? <a href="https://wa.me/233592294568" target="_blank">Chat with us on WhatsApp</a>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Classic Herbal Center | 📍 Accra-Adenta | 📞 0200990242 | 📞 0592294568</p>
+    <p>&copy; 2025 Classic Herbal Center | Accra-Adenta | 📞 0200990242 / 0592294568</p>
   </footer>
 </body>
 </html>
